@@ -5,8 +5,8 @@
    Tutorial 11
    Case Problem 1
 
-   Author: 
-   Date:   
+   Author: Angelina Stilphen
+   Date:   3.13.19
    
    Filename: bw_review.js
 	
@@ -43,6 +43,37 @@
   
   
 /*=================================================================*/
+// run the init function when the page loads 
+window.onload = init;
+
+
+function init() {
+      // 
+      var stars = document.querySelectorAll("span#stars img");
+      console.log(stars);
+      // add event listener for 
+      for (var i = 0; i < stars.length; i++) {
+            stars[i].style.cursor = "pointer";
+            stars[i].addEventListener("mouseenter", lightstars);
+      }
+      //document.getElementById("comment").addEventListener("keyup", updateCount); 
+}
+
+function lightstars(e) {
+      // color a star when user moves mouse pointer over a star image to the user’s rating of the book
+      var starNumber = e.target.alt;
+      var stars = document.querySelectorAll("span#stars img");
+      for (var i = 0; i < starNumber; i++) {
+            stars[i].src = "bw_star2.png";
+      }
+      for (var i = 0; starNumber.value < 5 ; i++) {
+            stars[i].src = "bw_star.png";
+      }
+      document.getElementById("rating").value = starNumber + "stars";
+      e.target.addEventListener("mouseleave", turnOffStars);
+      e.target.addEventListener("click", function(){ e.target.removeEventListener("mousemove", turnOffStars); });
+}
+
 
 function countCharacters(textStr) {
    var commentregx = /\s/g;
