@@ -44,7 +44,7 @@
   
 /*=================================================================*/
 // run the init function when the page loads 
-window.onload = init;
+window.onload = init; 
 
 
 function init() {
@@ -54,7 +54,7 @@ function init() {
       // add event listener for 
       for (var i = 0; i < stars.length; i++) {
             stars[i].style.cursor = "pointer";
-            stars[i].addEventListener("mouseenter", lightstars);
+            stars[i].addEventListener("mouseenter", lightstars); 
       }
       // document.getElementById("comment").addEventListener("keyup", updateCount); 
 }
@@ -64,10 +64,10 @@ function lightstars(e) {
       var starNumber = e.target.alt;
       var stars = document.querySelectorAll("span#stars img");
       for (var i = 0; i < starNumber; i++) {
-            stars[i].src = "bw_star2.png";
+            stars[i].src = "bw_star2.png"; 
       }
       for (var i = 0; starNumber.value < 5 ; i++) {
-            stars[i].src = "bw_star.png";
+            stars[i].src = "bw_star.png"; 
       } 
       document.getElementById("rating").value = starNumber + "stars";
       e.target.addEventListener("mouseleave", turnOffStars);
@@ -75,8 +75,24 @@ function lightstars(e) {
 }
 
 
+
+function turnOffStars() {
+      var stars = document.querySelectorAll("span#stars img");
+
+      for (var i = 0; i < stars.length; i++) {
+            stars[i].src = "bw_star.png"; 
+      }
+}
+
+//b. Use the countCharacters() function with commentText as the parameter value to calculate the number of characters in commentText. Store the value in the charcount variable. 
+
+function updateCount() {
+      var commentText = document.getElementById("comment").value; 
+      countCharacters(commentText) = charCount;
+}
+ 
 function countCharacters(textStr) {
-   var commentregx = /\s/g;
+   var commentregx = /\s/g; 
    var chars = textStr.replace(commentregx, "");
    return chars.length;
 }   
