@@ -56,7 +56,7 @@ function init() {
             stars[i].style.cursor = "pointer";
             stars[i].addEventListener("mouseenter", lightstars);
       }
-      //document.getElementById("comment").addEventListener("keyup", updateCount); 
+      // document.getElementById("comment").addEventListener("keyup", updateCount); 
 }
 
 function lightstars(e) {
@@ -68,7 +68,7 @@ function lightstars(e) {
       }
       for (var i = 0; starNumber.value < 5 ; i++) {
             stars[i].src = "bw_star.png";
-      }
+      } 
       document.getElementById("rating").value = starNumber + "stars";
       e.target.addEventListener("mouseleave", turnOffStars);
       e.target.addEventListener("click", function(){ e.target.removeEventListener("mousemove", turnOffStars); });
