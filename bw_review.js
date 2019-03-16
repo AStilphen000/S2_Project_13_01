@@ -70,8 +70,8 @@ function lightstars(e) {
             stars[i].src = "bw_star.png"; 
       } 
       document.getElementById("rating").value = starNumber + "stars";
-      e.target.addEventListener("mouseleave", turnOffStars);
-      e.target.addEventListener("click", function(){ e.target.removeEventListener("mousemove", turnOffStars); });
+      e.target.addEventListener("mouseleave", click);
+      e.target.addEventListener("click", function(){ e.target.removeEventListener("mousemove", click); });
 }
 
 
@@ -89,10 +89,11 @@ function turnOffStars() {
 function updateCount() {
       var commentText = document.getElementById("comment").value; 
       countCharacters(commentText) = charCount;
-}
+} 
  
-function countCharacters(textStr) {
+function countCharacters(textStr) { 
    var commentregx = /\s/g; 
    var chars = textStr.replace(commentregx, "");
-   return chars.length;
+   return chars.length; 
+   document.getElementById("wordcount") 
 }   
