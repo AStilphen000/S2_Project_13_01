@@ -50,13 +50,12 @@ window.onload = init;
 function init() {
       // 
       var stars = document.querySelectorAll("span#stars img");
-      console.log(stars);
       // add event listener for 
       for (var i = 0; i < stars.length; i++) {
             stars[i].style.cursor = "pointer";
             stars[i].addEventListener("mouseenter", lightstars); 
       }
-      // document.getElementById("comment").addEventListener("keyup", updateCount); 
+      document.getElementById("comment").addEventListener("keyup", updateCount); 
 }
 
 function lightstars(e) {
@@ -66,34 +65,54 @@ function lightstars(e) {
       for (var i = 0; i < starNumber; i++) {
             stars[i].src = "bw_star2.png"; 
       }
-      for (var i = 0; starNumber.value < 5 ; i++) {
+      for (var i = starNumber; i < 5; i++) {
             stars[i].src = "bw_star.png"; 
       } 
-      document.getElementById("rating").value = starNumber + "stars";
-      e.target.addEventListener("mouseleave", click);
-      e.target.addEventListener("click", function(){ e.target.removeEventListener("mousemove", click); });
+      document.getElementById("rating").value = starNumber + "star(s)";
+      e.target.addEventListener("mouseleave", turnOffStars);
+      // anaonymous function running after clicked functions that removes the turnOffStars when the mouse leaves the area 
+      e.target.addEventListener("click", function(){
+             e.target.removeEventListener("mouseleave", turnOffStars); 
+      });
 }
-
 
 
 function turnOffStars() {
       var stars = document.querySelectorAll("span#stars img");
 
-      for (var i = 0; i < stars.length; i++) {
-            stars[i].src = "bw_star.png"; 
+      for (var i = 0; i < 5; i++) {
+            stars[i].src = "bw_star.png";
       }
+      // targets the rating value and makes the stars unlight 
+      document.getElementById("rating").value = "";
 }
 
 //b. Use the countCharacters() function with commentText as the parameter value to calculate the number of characters in commentText. Store the value in the charcount variable. 
 
 function updateCount() {
+      // refrence the comment value and used the id of comment 
       var commentText = document.getElementById("comment").value; 
-      countCharacters(commentText) = charCount;
+      var charCount = countCharacters(commentText);
+      // reference the wordCount input box using id
+      var wordCountBox = document.getElementById("wordCount");
+      // calculate the number of integers input into the character box 
+      wordCountBox.value = charCount + "/1000";
+      // created if and else statement to change the wordcount style and color 
+      if (charCount > 1000) {
+            wordCountBox.style.color = "white";
+            wordCountBox.style.backgroundColor = "red";
+      } else {
+            wordCountBox.style.color = "black";
+            wordCountBox.style.backgroundColor = "white";
+      }
 } 
- 
+
+
+
+
+
 function countCharacters(textStr) { 
    var commentregx = /\s/g; 
    var chars = textStr.replace(commentregx, "");
    return chars.length; 
-   document.getElementById("wordcount") 
 }   
